@@ -1,0 +1,11 @@
+[project]
+name = "pydemineur"
+version = "0.0.1"
+authors = [
+    {name = "Nicolas Blin", email = "nicolas.blin@estaca.eu"},
+]
+description = "A simple Minesweeper game in Python for a school project"
+readme = "README.md"
+dependencies = [
+    "numpy"
+]
