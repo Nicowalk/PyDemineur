@@ -1,10 +1,9 @@
 import random
 
 def create_board(board_rows, board_columns):
-    #INPUTS
-        #define the size of the board with 2 positives integers
-            #board_rows : integer between 1 and 1000
-            #board_columns : integer between 1 and 1000
+    #INPUTS define the size of the board with 2 positives integers
+        #board_rows : integer between 1 and 1000
+        #board_columns : integer between 1 and 1000
     #OUTPUTS
         #board : list of list (2D) containing integers with the number of mine around each case
         #list_of_mines : list of positions of the mines 
@@ -160,11 +159,20 @@ def case_selection():
     col_selection = int(input())
     return row_selection, col_selection
 
- 
+annotated_cases = []
+
 is_game_finished = False
 while not is_game_finished:
+    select_or_annotate = 0
+    select_or_annotate = int(input("0 to select, 1 to annotate"))
+
     row_selection,col_selection = case_selection()
-    is_game_finished = perform_action(row_selection,col_selection,board,list_of_mines, cases_revealed)
+
+    if(select_or_annotate==0):
+        is_game_finished = perform_action(row_selection,col_selection,board,list_of_mines, cases_revealed)
+    if(select_or_annotate==1):
+        annotated_cases.append((row_selection,col_selection))
+
     print_board_in_game(board, list_of_mines, cases_revealed)
 
 print("You lost")
