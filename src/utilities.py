@@ -12,6 +12,7 @@ def is_there_a_mine(row_selection, column_selection, list_of_mines):
             return True
     return False
 
+
 #Check if the case has already been revealed
 def is_already_revealed(row_selection, column_selection, list_of_cases_revealed):
     #INPUTS
@@ -25,6 +26,7 @@ def is_already_revealed(row_selection, column_selection, list_of_cases_revealed)
         if case_position == (row_selection,column_selection):
             return True
     return False
+
 
 #Reveal the group of neighboring case with a value of 0
 def reveal_neighbor_0_cases(row_selection, column_selection, number_of_rows, number_of_columns, board, cases_revealed):
@@ -54,6 +56,7 @@ def reveal_neighbor_0_cases(row_selection, column_selection, number_of_rows, num
     # Recursive call of the fonctions in the directions specified in the list directions
     for direction_row, direction_col in directions:
         reveal_neighbor_0_cases(row_selection + direction_row, column_selection + direction_col, board, cases_revealed)
+
 
 #Check if the player has completed the game
 def is_end_of_game(number_of_rows, number_of_columns, number_of_mines, number_of_revealed_cases):

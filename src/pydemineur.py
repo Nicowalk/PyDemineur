@@ -3,8 +3,8 @@ from actions import *
 from utilities import *
 
 #Size of the board
-number_of_rows = 20
-number_of_columns = 20
+number_of_rows = 4
+number_of_columns = 4
 
 #Create the game board
 board, list_of_mines = create_board(number_of_rows,number_of_columns)
@@ -25,6 +25,8 @@ while not is_game_finished:
 
     #Select the row and column of the board
     row_selection,col_selection = case_selection(number_of_rows, number_of_columns)
+
+    case_type = 0
 
     #Reveal a case
     if(select_or_annotate==0):

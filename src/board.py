@@ -76,6 +76,7 @@ def print_board(board, list_of_mines):
     print()
     print(list_of_mines)
 
+
 #Print the game board in the terminal
 def print_board_in_game(board, list_of_mines, list_of_revealed_cases, list_annotated_cases):
     #INPUTS
@@ -108,6 +109,7 @@ def print_board_in_game(board, list_of_mines, list_of_revealed_cases, list_annot
         temp_board.append(new_row)
 
     board_to_print = temp_board
+
 
     #Add a space at the end of each caracter for readability
     for row in board_to_print:
