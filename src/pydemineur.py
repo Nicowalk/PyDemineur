@@ -72,6 +72,24 @@ def print_board(board, list_of_mines):
     print()
     print(list_of_mines)
 
+def print_board_in_game(board, list_of_mines, list_of_revealed_cases):
+    board_to_print = board
+    for mine_position in list_of_mines:
+        board_to_print[mine_position[0]][mine_position[1]] = 'X'
+    
+    board_to_print = [
+        [board_to_print[row][col] if (row, col) in list_of_revealed_cases else "*" for col in range(len(board_to_print[0]))]
+        for row in range(len(board_to_print))
+    ]
+
+    for row in board_to_print:
+        for col in row:
+            print(str(col) + ' ', end = '')
+        print()
+    
+    print()
+    print(list_of_mines)
+
 
 
 board, list_of_mines = create_board(10,10)
@@ -92,7 +110,7 @@ def is_already_revealed(row_selection, column_selection,cases_revealed):
     return False
 
 
-def select_a_case(row_selection, column_selection, board, list_of_mines, cases_revealed):
+def perform_action(row_selection, column_selection, board, list_of_mines, cases_revealed):
 
     if is_already_revealed(row_selection, column_selection, cases_revealed)==True:
         print("You already clicked this case")
@@ -102,13 +120,19 @@ def select_a_case(row_selection, column_selection, board, list_of_mines, cases_r
             return True
         else:
             return False
- 
-is_game_finished = False
-while not is_game_finished:
+
+def case_selection():
     print("Select the row")
     row_selection = int(input())
     print("Select the column")
     col_selection = int(input())
-    is_game_finished = select_a_case(row_selection,col_selection,board,list_of_mines, cases_revealed)
+    return row_selection, col_selection
+
+ 
+is_game_finished = False
+while not is_game_finished:
+    row_selection,col_selection = case_selection()
+    is_game_finished = perform_action(row_selection,col_selection,board,list_of_mines, cases_revealed)
+    print_board_in_game(board, list_of_mines, cases_revealed)
 
 print("You lost")
