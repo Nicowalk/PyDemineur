@@ -52,7 +52,12 @@ while not is_game_finished:
     print_board_in_game(board, list_of_mines, revealed_cases, annotated_cases)
 
     #Check if the game is win or lose
-    #TODO
-    is_game_finished = case_type
+    if(is_end_of_game(number_of_rows, number_of_columns, len(list_of_mines), len(revealed_cases))):
+        print("WINNER")
+        is_game_finished = True
 
-print("You lost")
+    if(case_type == 1):
+        print("LOSER")
+        is_game_finished = True
+
+print("GAME OVER")

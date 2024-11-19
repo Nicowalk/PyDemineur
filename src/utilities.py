@@ -54,3 +54,20 @@ def reveal_neighbor_0_cases(row_selection, column_selection, number_of_rows, num
     # Recursive call of the fonctions in the directions specified in the list directions
     for direction_row, direction_col in directions:
         reveal_neighbor_0_cases(row_selection + direction_row, column_selection + direction_col, board, cases_revealed)
+
+#Check if the player has completed the game
+def is_end_of_game(number_of_rows, number_of_columns, number_of_mines, number_of_revealed_cases):
+    #INPUTS
+        #number_of_rows: integer, number of rows of the game board
+        #number_of_columns: integer, number of columns of the game board
+        #number_of_mines: integer, number of mines in the game
+        #number_of_revealed_cases: integer, number of cases that the player has found during the party
+    #OUTPUTS
+        #boulean, 1 if the player has found all the cases and finish the game, else 0
+
+    #the numeber of remaining cases to find is the total number of cases minus the number of cases with a mine minus the number of cases we have already found
+    number_of_remaining_cases_to_find = number_of_columns*number_of_rows-number_of_revealed_cases-number_of_mines
+    if(number_of_remaining_cases_to_find == 0):
+        return 1
+    else:
+        return 0
