@@ -71,7 +71,33 @@ def print_board(board, list_of_mines):
     
     print()
     print(list_of_mines)
-        
+
+
 
 board, list_of_mines = create_board(10,10)
 print_board(board, list_of_mines)
+cases_revealed = []
+#Action : clic a case
+
+def is_there_a_mine(row_selection, column_selection, list_of_mines):
+    for mine_position in list_of_mines:
+        if (row_selection,column_selection) == mine_position:
+            return True
+    return False
+
+def clic_a_case(row_selection, column_selection, board, list_of_mines, cases_revealed):
+    is_already_revealed = False
+    for case_position in cases_revealed:
+        if case_position == (row_selection,column_selection):
+            is_already_revealed = True
+
+    if is_already_revealed==True:
+        print("You already clicked this case")
+    else:
+        cases_revealed.append((row_selection,column_selection))
+        if(is_there_a_mine(row_selection,column_selection,list_of_mines)):
+            print("LOST")
+        else:
+            print("WIN")
+
+clic_a_case(4,4,board,list_of_mines)
