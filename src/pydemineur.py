@@ -21,10 +21,10 @@ is_game_finished = False
 while not is_game_finished:
 
     #Choose between select a case or annotate a case
-    select_or_annotate = action_selection(number_of_rows, number_of_columns)
+    select_or_annotate = action_selection()
 
     #Select the row and column of the board
-    row_selection,col_selection = case_selection()
+    row_selection,col_selection = case_selection(number_of_rows, number_of_columns)
 
     #Reveal a case
     if(select_or_annotate==0):
@@ -33,7 +33,7 @@ while not is_game_finished:
             print("You already clicked this case")
         else:
             # return either 1 if the case was a mine or 0 if not
-            case_type = reveal_case(row_selection,col_selection,board,list_of_mines, revealed_cases)
+            case_type = reveal_case(row_selection,col_selection,number_of_rows, number_of_columns, board,list_of_mines, revealed_cases)
 
     #Annotate a case
     if(select_or_annotate==1):
