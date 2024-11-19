@@ -71,7 +71,7 @@ def print_board(board, list_of_mines):
     print()
     print(list_of_mines)
 
-def print_board_in_game(board, list_of_mines, list_of_revealed_cases):
+def print_board_in_game(board, list_of_mines, list_of_revealed_cases, annotated_cases):
     board_to_print = board
     for mine_position in list_of_mines:
         board_to_print[mine_position[0]][mine_position[1]] = 'X'
@@ -84,7 +84,10 @@ def print_board_in_game(board, list_of_mines, list_of_revealed_cases):
             if (row, col) in list_of_revealed_cases:
                 new_row.append(board_to_print[row][col])
             else:
-                new_row.append("*")
+                if (row, col) in annotated_cases:
+                    new_row.append("°")
+                else:
+                    new_row.append("*")
         temp_board.append(new_row)
 
     board_to_print = temp_board
@@ -171,8 +174,11 @@ while not is_game_finished:
     if(select_or_annotate==0):
         is_game_finished = perform_action(row_selection,col_selection,board,list_of_mines, cases_revealed)
     if(select_or_annotate==1):
-        annotated_cases.append((row_selection,col_selection))
+        if (row_selection, col_selection) in cases_revealed:
+            print("Case already revealed")
+        else:
+            annotated_cases.append((row_selection,col_selection))
 
-    print_board_in_game(board, list_of_mines, cases_revealed)
+    print_board_in_game(board, list_of_mines, cases_revealed, annotated_cases)
 
 print("You lost")
