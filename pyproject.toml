@@ -7,5 +7,4 @@ authors = [
 description = "A simple Minesweeper game in Python for a school project"
 readme = "README.md"
 dependencies = [
-    "numpy"
 ]
