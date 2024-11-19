@@ -52,13 +52,13 @@ def case_selection(number_of_rows, number_of_columns):
 
     #The user select a row number while it is valid
     row_selection = -1
-    while not (row_selection>0 and row_selection<number_of_rows):
+    while not (row_selection>=0 and row_selection<number_of_rows):
         print("Select the row between 0 and " + str(number_of_rows-1))
         row_selection = int(input())
     
     #The user select a column number while it is valid
     col_selection = -1
-    while not(col_selection>0 and col_selection<number_of_columns):
+    while not(col_selection>=0 and col_selection<number_of_columns):
         print("Select the column between 0 and " + str(number_of_columns-1))
         col_selection = int(input())
 

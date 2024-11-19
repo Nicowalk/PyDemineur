@@ -55,7 +55,7 @@ def reveal_neighbor_0_cases(row_selection, column_selection, number_of_rows, num
     
     # Recursive call of the fonctions in the directions specified in the list directions
     for direction_row, direction_col in directions:
-        reveal_neighbor_0_cases(row_selection + direction_row, column_selection + direction_col, board, cases_revealed)
+        reveal_neighbor_0_cases(row_selection + direction_row, column_selection + direction_col, number_of_rows, number_of_columns, board, cases_revealed)
 
 
 #Check if the player has completed the game
