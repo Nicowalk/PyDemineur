@@ -77,10 +77,18 @@ def print_board_in_game(board, list_of_mines, list_of_revealed_cases):
     for mine_position in list_of_mines:
         board_to_print[mine_position[0]][mine_position[1]] = 'X'
     
-    board_to_print = [
-        [board_to_print[row][col] if (row, col) in list_of_revealed_cases else "*" for col in range(len(board_to_print[0]))]
-        for row in range(len(board_to_print))
-    ]
+    temp_board = []
+
+    for row in range(len(board_to_print)):
+        new_row = []
+        for col in range(len(board_to_print[0])):
+            if (row, col) in list_of_revealed_cases:
+                new_row.append(board_to_print[row][col])
+            else:
+                new_row.append("*")
+        temp_board.append(new_row)
+
+    board_to_print = temp_board
 
     for row in board_to_print:
         for col in row:
@@ -88,7 +96,6 @@ def print_board_in_game(board, list_of_mines, list_of_revealed_cases):
         print()
     
     print()
-    print(list_of_mines)
 
 
 
@@ -109,13 +116,38 @@ def is_already_revealed(row_selection, column_selection,cases_revealed):
             return True
     return False
 
+def reveal_neighbor_0_cases(row_selection, column_selection, board, cases_revealed):
+    rows = len(board)
+    cols = len(board[1])
+
+    if (row_selection < 0 or row_selection >= rows or 
+        column_selection < 0 or column_selection >= cols or
+        (row_selection, column_selection) in cases_revealed):
+        return
+
+    if board[row_selection][column_selection] != 0:
+        return
+    else:
+        cases_revealed.append((row_selection, column_selection))
+
+    directions = [(-1, -1), (-1, 0), (-1, 1), 
+                  (0, -1),          (0, 1),
+                  (1, -1), (1, 0), (1, 1)]
+    # Recursive call
+    for dr, dc in directions:
+        reveal_neighbor_0_cases(row_selection + dr, column_selection + dc, board, cases_revealed)
 
 def perform_action(row_selection, column_selection, board, list_of_mines, cases_revealed):
 
     if is_already_revealed(row_selection, column_selection, cases_revealed)==True:
         print("You already clicked this case")
     else:
-        cases_revealed.append((row_selection,column_selection))
+        
+        if(board[row_selection][col_selection]==0):
+            reveal_neighbor_0_cases(row_selection, column_selection, board, cases_revealed)
+        else:
+            cases_revealed.append((row_selection,column_selection))
+        
         if(is_there_a_mine(row_selection,column_selection,list_of_mines)):
             return True
         else:
