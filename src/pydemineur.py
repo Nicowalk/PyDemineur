@@ -60,8 +60,15 @@ def create_board(board_rows, board_columns):
     return board, list_of_mines
 
 def print_board(board, list_of_mines):
-    for row in board:
-        print(row)
+    board_to_print = board
+    for mine_position in list_of_mines:
+        board_to_print[mine_position[0]][mine_position[1]] = 'X'
+    
+    for row in board_to_print:
+        for col in row:
+            print(str(col) + ' ', end = '')
+        print()
+    
     print()
     print(list_of_mines)
         
