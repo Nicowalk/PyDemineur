@@ -85,13 +85,16 @@ def is_there_a_mine(row_selection, column_selection, list_of_mines):
             return True
     return False
 
-def clic_a_case(row_selection, column_selection, board, list_of_mines, cases_revealed):
-    is_already_revealed = False
+def is_already_revealed(row_selection, column_selection,cases_revealed):
     for case_position in cases_revealed:
         if case_position == (row_selection,column_selection):
-            is_already_revealed = True
+            return True
+    return False
 
-    if is_already_revealed==True:
+
+def clic_a_case(row_selection, column_selection, board, list_of_mines, cases_revealed):
+
+    if is_already_revealed(row_selection, column_selection, cases_revealed)==True:
         print("You already clicked this case")
     else:
         cases_revealed.append((row_selection,column_selection))
@@ -100,4 +103,4 @@ def clic_a_case(row_selection, column_selection, board, list_of_mines, cases_rev
         else:
             print("WIN")
 
-clic_a_case(4,4,board,list_of_mines)
+clic_a_case(4,4,board,list_of_mines, cases_revealed)
