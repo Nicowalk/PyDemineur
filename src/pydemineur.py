@@ -2,8 +2,12 @@ from board import *
 from actions import *
 from utilities import *
 
+#Size of the board
+number_of_rows = 20
+number_of_columns = 20
+
 #Create the game board
-board, list_of_mines = create_board(20,20)
+board, list_of_mines = create_board(number_of_rows,number_of_columns)
 
 print_board(board, list_of_mines)
 #Game data : revealed cases and annotated cases (each case is either : not revealed or revealed; An annotated case is always a not revealed case)
@@ -17,7 +21,7 @@ is_game_finished = False
 while not is_game_finished:
 
     #Choose between select a case or annotate a case
-    select_or_annotate = action_selection()
+    select_or_annotate = action_selection(number_of_rows, number_of_columns)
 
     #Select the row and column of the board
     row_selection,col_selection = case_selection()
