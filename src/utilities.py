@@ -48,10 +48,8 @@ def reveal_neighbor_0_cases(row_selection, column_selection, number_of_rows, num
     else:
         cases_revealed.append((row_selection, column_selection))
 
-    #List of the directions to check the neighbor cases 
-    directions = [(-1, -1), (-1, 0), (-1, 1), 
-                  (0, -1),          (0, 1),
-                  (1, -1), (1, 0), (1, 1)]
+    #List of the directions to check the neighbor cases (only top, right, bot, left; not diagonal)
+    directions = [(-1, 0), (0, -1), (0, 1), (1, 0)]
     
     # Recursive call of the fonctions in the directions specified in the list directions
     for direction_row, direction_col in directions:
