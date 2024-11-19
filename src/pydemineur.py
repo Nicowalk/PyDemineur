@@ -92,15 +92,23 @@ def is_already_revealed(row_selection, column_selection,cases_revealed):
     return False
 
 
-def clic_a_case(row_selection, column_selection, board, list_of_mines, cases_revealed):
+def select_a_case(row_selection, column_selection, board, list_of_mines, cases_revealed):
 
     if is_already_revealed(row_selection, column_selection, cases_revealed)==True:
         print("You already clicked this case")
     else:
         cases_revealed.append((row_selection,column_selection))
         if(is_there_a_mine(row_selection,column_selection,list_of_mines)):
-            print("LOST")
+            return True
         else:
-            print("WIN")
+            return False
+ 
+is_game_finished = False
+while not is_game_finished:
+    print("Select the row")
+    row_selection = int(input())
+    print("Select the column")
+    col_selection = int(input())
+    is_game_finished = select_a_case(row_selection,col_selection,board,list_of_mines, cases_revealed)
 
-clic_a_case(4,4,board,list_of_mines, cases_revealed)
+print("You lost")
