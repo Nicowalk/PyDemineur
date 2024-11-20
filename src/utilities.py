@@ -1,11 +1,21 @@
-#Check if there is a mine in the selected position
-def is_there_a_mine(row_selection, column_selection, list_of_mines):
-    #INPUTS
-        # row_selection : integer, row selected by the user
-        # column_selection : integer, column selected by the user
-        # list_of_mines : list of positions (row,col) of the mines in the board
-    #OUTPUTS
-        #boolean : 1 if there is a mine, 0 if there is not
+def is_there_a_mine(row_selection, column_selection, list_of_mines) -> bool:
+    """
+    Check if there is a mine in the selected position.
+
+    Parameters
+    ----------
+    row_selection : int
+        Row selected by the user.
+    column_selection : int
+        Column selected by the user.
+    list_of_mines : list of tuple of int
+        List of positions (row, col) of the mines in the board.
+
+    Returns
+    -------
+    bool
+        True if there is a mine, False if there is not.
+    """
     
     for mine_position in list_of_mines:
         if (row_selection,column_selection) == mine_position:
@@ -13,14 +23,24 @@ def is_there_a_mine(row_selection, column_selection, list_of_mines):
     return False
 
 
-#Check if the case has already been revealed
-def is_already_revealed(row_selection, column_selection, list_of_cases_revealed):
-    #INPUTS
-        # row_selection : integer, row selected by the user
-        # column_selection : integer, column selected by the user
-        # list_of_cases_revealed : list of positions (row,col) of the cases revealed in the board
-    #OUTPUTS
-        #boolean : 1 if there is the case has already been revealed, 0 if there it is not
+def is_already_revealed(row_selection, column_selection, list_of_cases_revealed) -> bool:
+    """
+    Check if the case has already been revealed.
+
+    Parameters
+    ----------
+    row_selection : int
+        Row selected by the user.
+    column_selection : int
+        Column selected by the user.
+    list_of_cases_revealed : list of tuple of int
+        List of positions (row, col) of the cases revealed in the board.
+
+    Returns
+    -------
+    bool
+        True if the case has already been revealed, False if it is not.
+    """
 
     for case_position in list_of_cases_revealed:
         if case_position == (row_selection,column_selection):
@@ -28,16 +48,26 @@ def is_already_revealed(row_selection, column_selection, list_of_cases_revealed)
     return False
 
 
-#Reveal the group of neighboring case with a value of 0
 def reveal_neighbor_0_cases(row_selection, column_selection, number_of_rows, number_of_columns, board, cases_revealed):
-    #INPUT
-        # row_selection : integer, row selected by the user
-        # column_selection : integer, column selected by the user
-        # number_of_rows : integer, number of rows of the board
-        # number_of_columns : integer, number of columns of the board
-        # board : list of list (2D) containing integers with the number of mine around each case
-        # cases_revealed : list of positions (row,col) of the cases revealed in the board
+    """
+    Reveal the group of neighboring cases with a value of 0.
 
+    Parameters
+    ----------
+    row_selection : int
+        Row selected by the user.
+    column_selection : int
+        Column selected by the user.
+    number_of_rows : int
+        Number of rows of the board.
+    number_of_columns : int
+        Number of columns of the board.
+    board : list of list of int
+        2D list containing integers with the number of mines around each case.
+    cases_revealed : list of tuple of int
+        List of positions (row, col) of the cases revealed in the board.
+    """
+   
     #stop if the position select is outside the board
     if (row_selection < 0 or row_selection >= number_of_rows or 
         column_selection < 0 or column_selection >= number_of_columns or
@@ -58,15 +88,26 @@ def reveal_neighbor_0_cases(row_selection, column_selection, number_of_rows, num
         reveal_neighbor_0_cases(row_selection + direction_row, column_selection + direction_col, number_of_rows, number_of_columns, board, cases_revealed)
 
 
-#Check if the player has completed the game
-def is_end_of_game(number_of_rows, number_of_columns, number_of_mines, number_of_revealed_cases):
-    #INPUTS
-        #number_of_rows: integer, number of rows of the game board
-        #number_of_columns: integer, number of columns of the game board
-        #number_of_mines: integer, number of mines in the game
-        #number_of_revealed_cases: integer, number of cases that the player has found during the party
-    #OUTPUTS
-        #boulean, 1 if the player has found all the cases and finish the game, else 0
+def is_end_of_game(number_of_rows, number_of_columns, number_of_mines, number_of_revealed_cases) -> bool:
+    """
+    Check if the player has completed the game.
+
+    Parameters
+    ----------
+    number_of_rows : int
+        Number of rows of the game board.
+    number_of_columns : int
+        Number of columns of the game board.
+    number_of_mines : int
+        Number of mines in the game.
+    number_of_revealed_cases : int
+        Number of cases that the player has found during the game.
+
+    Returns
+    -------
+    bool
+        True if the player has found all the cases and finished the game, else False.
+    """
 
     #the numeber of remaining cases to find is the total number of cases minus the number of cases with a mine minus the number of cases we have already found
     number_of_remaining_cases_to_find = number_of_columns*number_of_rows-number_of_revealed_cases-number_of_mines
