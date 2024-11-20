@@ -1,7 +1,15 @@
 from utilities import *
 
 
-def reveal_case(row_selection, column_selection, number_of_rows, number_of_columns,board, list_of_mines, cases_revealed) -> bool:
+def reveal_case(
+    row_selection,
+    column_selection,
+    number_of_rows,
+    number_of_columns,
+    board,
+    list_of_mines,
+    cases_revealed,
+) -> bool:
     """
     Reveal the case that is selected.
 
@@ -28,19 +36,27 @@ def reveal_case(row_selection, column_selection, number_of_rows, number_of_colum
         True if the case contains a mine, False if it doesn't.
     """
 
-    #check if the revealed case contain a mine
-    if(is_there_a_mine(row_selection,column_selection,list_of_mines)):
-        #If the revealed case is a mine return 1
+    # check if the revealed case contain a mine
+    if is_there_a_mine(row_selection, column_selection, list_of_mines):
+        # If the revealed case is a mine return 1
         return 1
     else:
-        #If the case is not a mine and the integer value stored in the board at this position is 0, reveals all the group of case that also contain a 0, else, just add the case to the list of revealed cases
-        if(board[row_selection][column_selection]==0):
-            reveal_neighbor_0_cases(row_selection, column_selection,number_of_rows, number_of_columns, board, cases_revealed)
+        # If the case is not a mine and the integer value stored in the board at this position is 0, reveals all the group of case that also contain a 0, else, just add the case to the list of revealed cases
+        if board[row_selection][column_selection] == 0:
+            reveal_neighbor_0_cases(
+                row_selection,
+                column_selection,
+                number_of_rows,
+                number_of_columns,
+                board,
+                cases_revealed,
+            )
 
         else:
-            cases_revealed.append((row_selection,column_selection))
-        #If the revealed case is not a mine return 0
+            cases_revealed.append((row_selection, column_selection))
+        # If the revealed case is not a mine return 0
     return 0
+
 
 def action_selection():
     """
@@ -53,8 +69,8 @@ def action_selection():
     """
 
     select_or_annotate = -1
-    #while the input is not 0 or 1
-    while (select_or_annotate != 0 and select_or_annotate !=1):
+    # while the input is not 0 or 1
+    while select_or_annotate != 0 and select_or_annotate != 1:
         print("0 to reveal a case, 1 to annotate")
         select_or_annotate = int(input())
 
@@ -77,16 +93,16 @@ def case_selection(number_of_rows, number_of_columns):
     tuple
         The row number and column number selected by the user.
     """
-    
+
     row_selection = -1
-    while not (row_selection>=0 and row_selection<number_of_rows):
-        print("Select the row between 0 and " + str(number_of_rows-1))
+    while not (row_selection >= 0 and row_selection < number_of_rows):
+        print("Select the row between 0 and " + str(number_of_rows - 1))
         row_selection = int(input())
-    
-    #The user select a column number while it is valid
+
+    # The user select a column number while it is valid
     col_selection = -1
-    while not(col_selection>=0 and col_selection<number_of_columns):
-        print("Select the column between 0 and " + str(number_of_columns-1))
+    while not (col_selection >= 0 and col_selection < number_of_columns):
+        print("Select the column between 0 and " + str(number_of_columns - 1))
         col_selection = int(input())
 
     return row_selection, col_selection
