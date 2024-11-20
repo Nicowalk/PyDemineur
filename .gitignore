@@ -40,16 +40,16 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .nox/
-.coverage
-.coverage.*
+!.coverage
+!.coverage.*
 .cache
 nosetests.xml
-coverage.xml
+!coverage.xml
 *.cover
 *.py,cover
 .hypothesis/
 .pytest_cache/
-cover/
+!cover/
 
 # Translations
 *.mo
@@ -69,7 +69,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+!docs/_build/
 
 # PyBuilder
 .pybuilder/
