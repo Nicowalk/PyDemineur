@@ -1,15 +1,28 @@
 import random
 
 def create_board(board_rows, board_columns):
-    #INPUTS define the size of the board with 2 positives integers
-        #board_rows : integer between 1 and 100
-        #board_columns : integer between 1 and 100
-    #OUTPUTS
-        #board : list of list (2D) containing integers with the number of mine around each case
-        #list_of_mines : list of positions of the mines 
+    """
+    Create a game board with the specified number of rows and columns.
+
+    Parameters
+    ----------
+    board_rows : int
+        Number of rows in the board, must be between 1 and 100.
+    board_columns : int
+        Number of columns in the board, must be between 1 and 100.
+
+    Returns
+    -------
+    tuple
+        A tuple containing:
+        - board: list of list of int
+            2D list containing integers with the number of mines around each case.
+        - list_of_mines: list of tuple of int
+            List of positions (row, col) of the mines.
+    """
     max_size_board  = 100
 
-    #100% coverage on board size
+    #check validity of board dimensions
     if board_columns < 1 :
         print("error number of column is not valid")
     if board_rows < 1 :
@@ -59,11 +72,17 @@ def create_board(board_rows, board_columns):
                 board[mine_position[0]+1][mine_position[1]+1] += 1
     return board, list_of_mines
 
-#Print the board revealed with values and mines. Also print the mines position. Used for debug
 def print_board(board, list_of_mines):
-    #INPUTS
-        #board : 2D array of the board with integer that represent the number of mine around each case
-        #list of mines : list of positions (row,col) of the mines
+    """
+    Print the board with values and mines for debugging purposes.
+
+    Parameters
+    ----------
+    board : list of list of int
+        2D array of the board with integers that represent the number of mines around each case.
+    list_of_mines : list of tuple of int
+        List of positions (row, col) of the mines.
+    """
     board_to_print = board
     for mine_position in list_of_mines:
         board_to_print[mine_position[0]][mine_position[1]] = 'X'
@@ -77,13 +96,21 @@ def print_board(board, list_of_mines):
     print(list_of_mines)
 
 
-#Print the game board in the terminal
 def print_board_in_game(board, list_of_mines, list_of_revealed_cases, list_annotated_cases):
-    #INPUTS
-        #board : 2D array of the board with integer that represent the number of mine around each case
-        #list of mines : list of positions (row,col) of the mines
-        #list_of_revealed_cases : list of the positions (row,col) of revealed cases
-        #list_annotated_cases : list of the positions (row,col) of the annotated cases
+    """
+    Print the game board in the terminal.
+
+    Parameters
+    ----------
+    board : list of list of int
+        2D array of the board with integers that represent the number of mines around each case.
+    list_of_mines : list of tuple of int
+        List of positions (row, col) of the mines.
+    list_of_revealed_cases : list of tuple of int
+        List of the positions (row, col) of revealed cases.
+    list_annotated_cases : list of tuple of int
+        List of the positions (row, col) of the annotated cases.
+    """
     
     #create board_to_print that contains X for the location of the mine and an integer that represent the number of mine around the case
     board_to_print = board
