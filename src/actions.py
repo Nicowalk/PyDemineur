@@ -77,6 +77,7 @@ def case_selection(number_of_rows, number_of_columns):
     tuple
         The row number and column number selected by the user.
     """
+    
     row_selection = -1
     while not (row_selection>=0 and row_selection<number_of_rows):
         print("Select the row between 0 and " + str(number_of_rows-1))

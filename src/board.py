@@ -1,25 +1,27 @@
 import random
 
-def create_board(board_rows, board_columns):
+def create_board(board_rows: int, board_columns: int) -> tuple:
     """
     Create a game board with the specified number of rows and columns.
 
     Parameters
     ----------
     board_rows : int
-        Number of rows in the board, must be between 1 and 100.
+        Number of rows in the board. Must be between 1 and 100.
     board_columns : int
-        Number of columns in the board, must be between 1 and 100.
+        Number of columns in the board. Must be between 1 and 100.
 
     Returns
     -------
     tuple
         A tuple containing:
-        - board: list of list of int
-            2D list containing integers with the number of mines around each case.
-        - list_of_mines: list of tuple of int
-            List of positions (row, col) of the mines.
+        
+        - **board** (*list of list of int*): 
+          A 2D list where each cell contains the number of mines around it.
+        - **list_of_mines** (*list of tuple of int*): 
+          A list of positions (row, col) of all mines on the board.
     """
+
     max_size_board  = 100
 
     #check validity of board dimensions
@@ -83,6 +85,7 @@ def print_board(board, list_of_mines):
     list_of_mines : list of tuple of int
         List of positions (row, col) of the mines.
     """
+
     board_to_print = board
     for mine_position in list_of_mines:
         board_to_print[mine_position[0]][mine_position[1]] = 'X'
