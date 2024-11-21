@@ -89,9 +89,9 @@
 <span class="sd">    bool</span>
 <span class="sd">        True if there is a mine, False if there is not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="k">for</span> <span class="n">mine_position</span> <span class="ow">in</span> <span class="n">list_of_mines</span><span class="p">:</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">row_selection</span><span class="p">,</span><span class="n">column_selection</span><span class="p">)</span> <span class="o">==</span> <span class="n">mine_position</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">)</span> <span class="o">==</span> <span class="n">mine_position</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -99,7 +99,9 @@
 
 <div class="viewcode-block" id="is_already_revealed">
 <a class="viewcode-back" href="../utilities.html#utilities.is_already_revealed">[docs]</a>
-<span class="k">def</span> <span class="nf">is_already_revealed</span><span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">,</span> <span class="n">list_of_cases_revealed</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">is_already_revealed</span><span class="p">(</span>
+    <span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">,</span> <span class="n">list_of_cases_revealed</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check if the case has already been revealed.</span>
 
@@ -119,7 +121,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">for</span> <span class="n">case_position</span> <span class="ow">in</span> <span class="n">list_of_cases_revealed</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">case_position</span> <span class="o">==</span> <span class="p">(</span><span class="n">row_selection</span><span class="p">,</span><span class="n">column_selection</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">case_position</span> <span class="o">==</span> <span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span></div>
 
@@ -127,7 +129,14 @@
 
 <div class="viewcode-block" id="reveal_neighbor_0_cases">
 <a class="viewcode-back" href="../utilities.html#utilities.reveal_neighbor_0_cases">[docs]</a>
-<span class="k">def</span> <span class="nf">reveal_neighbor_0_cases</span><span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">,</span> <span class="n">number_of_rows</span><span class="p">,</span> <span class="n">number_of_columns</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">cases_revealed</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">reveal_neighbor_0_cases</span><span class="p">(</span>
+    <span class="n">row_selection</span><span class="p">,</span>
+    <span class="n">column_selection</span><span class="p">,</span>
+    <span class="n">number_of_rows</span><span class="p">,</span>
+    <span class="n">number_of_columns</span><span class="p">,</span>
+    <span class="n">board</span><span class="p">,</span>
+    <span class="n">cases_revealed</span><span class="p">,</span>
+<span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Reveal the group of neighboring cases with a value of 0.</span>
 
@@ -146,31 +155,44 @@
 <span class="sd">    cases_revealed : list of tuple of int</span>
 <span class="sd">        List of positions (row, col) of the cases revealed in the board.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-   
-    <span class="c1">#stop if the position select is outside the board</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">row_selection</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">row_selection</span> <span class="o">&gt;=</span> <span class="n">number_of_rows</span> <span class="ow">or</span> 
-        <span class="n">column_selection</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">column_selection</span> <span class="o">&gt;=</span> <span class="n">number_of_columns</span> <span class="ow">or</span>
-        <span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cases_revealed</span><span class="p">):</span>
+
+    <span class="c1"># stop if the position select is outside the board</span>
+    <span class="k">if</span> <span class="p">(</span>
+        <span class="n">row_selection</span> <span class="o">&lt;</span> <span class="mi">0</span>
+        <span class="ow">or</span> <span class="n">row_selection</span> <span class="o">&gt;=</span> <span class="n">number_of_rows</span>
+        <span class="ow">or</span> <span class="n">column_selection</span> <span class="o">&lt;</span> <span class="mi">0</span>
+        <span class="ow">or</span> <span class="n">column_selection</span> <span class="o">&gt;=</span> <span class="n">number_of_columns</span>
+        <span class="ow">or</span> <span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cases_revealed</span>
+    <span class="p">):</span>
         <span class="k">return</span>
 
-    <span class="c1">#stop if the value is not 0,  else, the position is added to the list of revealed cases</span>
+    <span class="c1"># stop if the value is not 0,  else, the position is added to the list of revealed cases</span>
     <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">row_selection</span><span class="p">][</span><span class="n">column_selection</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">cases_revealed</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">))</span>
 
-    <span class="c1">#List of the directions to check the neighbor cases (only top, right, bot, left; not diagonal)</span>
+    <span class="c1"># List of the directions to check the neighbor cases (only top, right, bot, left; not diagonal)</span>
     <span class="n">directions</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
-    
+
     <span class="c1"># Recursive call of the fonctions in the directions specified in the list directions</span>
     <span class="k">for</span> <span class="n">direction_row</span><span class="p">,</span> <span class="n">direction_col</span> <span class="ow">in</span> <span class="n">directions</span><span class="p">:</span>
-        <span class="n">reveal_neighbor_0_cases</span><span class="p">(</span><span class="n">row_selection</span> <span class="o">+</span> <span class="n">direction_row</span><span class="p">,</span> <span class="n">column_selection</span> <span class="o">+</span> <span class="n">direction_col</span><span class="p">,</span> <span class="n">number_of_rows</span><span class="p">,</span> <span class="n">number_of_columns</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">cases_revealed</span><span class="p">)</span></div>
+        <span class="n">reveal_neighbor_0_cases</span><span class="p">(</span>
+            <span class="n">row_selection</span> <span class="o">+</span> <span class="n">direction_row</span><span class="p">,</span>
+            <span class="n">column_selection</span> <span class="o">+</span> <span class="n">direction_col</span><span class="p">,</span>
+            <span class="n">number_of_rows</span><span class="p">,</span>
+            <span class="n">number_of_columns</span><span class="p">,</span>
+            <span class="n">board</span><span class="p">,</span>
+            <span class="n">cases_revealed</span><span class="p">,</span>
+        <span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="is_end_of_game">
 <a class="viewcode-back" href="../utilities.html#utilities.is_end_of_game">[docs]</a>
-<span class="k">def</span> <span class="nf">is_end_of_game</span><span class="p">(</span><span class="n">number_of_rows</span><span class="p">,</span> <span class="n">number_of_columns</span><span class="p">,</span> <span class="n">number_of_mines</span><span class="p">,</span> <span class="n">number_of_revealed_cases</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">is_end_of_game</span><span class="p">(</span>
+    <span class="n">number_of_rows</span><span class="p">,</span> <span class="n">number_of_columns</span><span class="p">,</span> <span class="n">number_of_mines</span><span class="p">,</span> <span class="n">number_of_revealed_cases</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Check if the player has completed the game.</span>
 
@@ -191,9 +213,11 @@
 <span class="sd">        True if the player has found all the cases and finished the game, else False.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#the numeber of remaining cases to find is the total number of cases minus the number of cases with a mine minus the number of cases we have already found</span>
-    <span class="n">number_of_remaining_cases_to_find</span> <span class="o">=</span> <span class="n">number_of_columns</span><span class="o">*</span><span class="n">number_of_rows</span><span class="o">-</span><span class="n">number_of_revealed_cases</span><span class="o">-</span><span class="n">number_of_mines</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">number_of_remaining_cases_to_find</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># the numeber of remaining cases to find is the total number of cases minus the number of cases with a mine minus the number of cases we have already found</span>
+    <span class="n">number_of_remaining_cases_to_find</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">number_of_columns</span> <span class="o">*</span> <span class="n">number_of_rows</span> <span class="o">-</span> <span class="n">number_of_revealed_cases</span> <span class="o">-</span> <span class="n">number_of_mines</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">number_of_remaining_cases_to_find</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span></div>

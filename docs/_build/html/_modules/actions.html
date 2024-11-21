@@ -74,7 +74,15 @@
 
 <div class="viewcode-block" id="reveal_case">
 <a class="viewcode-back" href="../actions.html#actions.reveal_case">[docs]</a>
-<span class="k">def</span> <span class="nf">reveal_case</span><span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">,</span> <span class="n">number_of_rows</span><span class="p">,</span> <span class="n">number_of_columns</span><span class="p">,</span><span class="n">board</span><span class="p">,</span> <span class="n">list_of_mines</span><span class="p">,</span> <span class="n">cases_revealed</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">reveal_case</span><span class="p">(</span>
+    <span class="n">row_selection</span><span class="p">,</span>
+    <span class="n">column_selection</span><span class="p">,</span>
+    <span class="n">number_of_rows</span><span class="p">,</span>
+    <span class="n">number_of_columns</span><span class="p">,</span>
+    <span class="n">board</span><span class="p">,</span>
+    <span class="n">list_of_mines</span><span class="p">,</span>
+    <span class="n">cases_revealed</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Reveal the case that is selected.</span>
 
@@ -101,19 +109,27 @@
 <span class="sd">        True if the case contains a mine, False if it doesn&#39;t.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#check if the revealed case contain a mine</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">is_there_a_mine</span><span class="p">(</span><span class="n">row_selection</span><span class="p">,</span><span class="n">column_selection</span><span class="p">,</span><span class="n">list_of_mines</span><span class="p">)):</span>
-        <span class="c1">#If the revealed case is a mine return 1</span>
+    <span class="c1"># check if the revealed case contain a mine</span>
+    <span class="k">if</span> <span class="n">is_there_a_mine</span><span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">,</span> <span class="n">list_of_mines</span><span class="p">):</span>
+        <span class="c1"># If the revealed case is a mine return 1</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1">#If the case is not a mine and the integer value stored in the board at this position is 0, reveals all the group of case that also contain a 0, else, just add the case to the list of revealed cases</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="n">row_selection</span><span class="p">][</span><span class="n">column_selection</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span>
-            <span class="n">reveal_neighbor_0_cases</span><span class="p">(</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">,</span><span class="n">number_of_rows</span><span class="p">,</span> <span class="n">number_of_columns</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">cases_revealed</span><span class="p">)</span>
+        <span class="c1"># If the case is not a mine and the integer value stored in the board at this position is 0, reveals all the group of case that also contain a 0, else, just add the case to the list of revealed cases</span>
+        <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">row_selection</span><span class="p">][</span><span class="n">column_selection</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">reveal_neighbor_0_cases</span><span class="p">(</span>
+                <span class="n">row_selection</span><span class="p">,</span>
+                <span class="n">column_selection</span><span class="p">,</span>
+                <span class="n">number_of_rows</span><span class="p">,</span>
+                <span class="n">number_of_columns</span><span class="p">,</span>
+                <span class="n">board</span><span class="p">,</span>
+                <span class="n">cases_revealed</span><span class="p">,</span>
+            <span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">cases_revealed</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">row_selection</span><span class="p">,</span><span class="n">column_selection</span><span class="p">))</span>
-        <span class="c1">#If the revealed case is not a mine return 0</span>
+            <span class="n">cases_revealed</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">row_selection</span><span class="p">,</span> <span class="n">column_selection</span><span class="p">))</span>
+        <span class="c1"># If the revealed case is not a mine return 0</span>
     <span class="k">return</span> <span class="mi">0</span></div>
+
 
 
 <div class="viewcode-block" id="action_selection">
@@ -129,8 +145,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">select_or_annotate</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="c1">#while the input is not 0 or 1</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">select_or_annotate</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">select_or_annotate</span> <span class="o">!=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># while the input is not 0 or 1</span>
+    <span class="k">while</span> <span class="n">select_or_annotate</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">select_or_annotate</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0 to reveal a case, 1 to annotate&quot;</span><span class="p">)</span>
         <span class="n">select_or_annotate</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 
@@ -156,16 +172,16 @@
 <span class="sd">    tuple</span>
 <span class="sd">        The row number and column number selected by the user.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">row_selection</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">row_selection</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">row_selection</span><span class="o">&lt;</span><span class="n">number_of_rows</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Select the row between 0 and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_rows</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">row_selection</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">row_selection</span> <span class="o">&lt;</span> <span class="n">number_of_rows</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Select the row between 0 and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
         <span class="n">row_selection</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
-    
-    <span class="c1">#The user select a column number while it is valid</span>
+
+    <span class="c1"># The user select a column number while it is valid</span>
     <span class="n">col_selection</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">while</span> <span class="ow">not</span><span class="p">(</span><span class="n">col_selection</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">col_selection</span><span class="o">&lt;</span><span class="n">number_of_columns</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Select the column between 0 and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_columns</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">col_selection</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">col_selection</span> <span class="o">&lt;</span> <span class="n">number_of_columns</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Select the column between 0 and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
         <span class="n">col_selection</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 
     <span class="k">return</span> <span class="n">row_selection</span><span class="p">,</span> <span class="n">col_selection</span></div>

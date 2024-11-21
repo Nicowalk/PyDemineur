@@ -71,6 +71,7 @@
   <h1>Source code for board</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">random</span>
 
+
 <div class="viewcode-block" id="create_board">
 <a class="viewcode-back" href="../board.html#board.create_board">[docs]</a>
 <span class="k">def</span> <span class="nf">create_board</span><span class="p">(</span><span class="n">board_rows</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">board_columns</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
@@ -88,64 +89,64 @@
 <span class="sd">    -------</span>
 <span class="sd">    tuple</span>
 <span class="sd">        A tuple containing:</span>
-<span class="sd">        </span>
-<span class="sd">        - **board** (*list of list of int*): </span>
+
+<span class="sd">        - **board** (*list of list of int*):</span>
 <span class="sd">          A 2D list where each cell contains the number of mines around it.</span>
-<span class="sd">        - **list_of_mines** (*list of tuple of int*): </span>
+<span class="sd">        - **list_of_mines** (*list of tuple of int*):</span>
 <span class="sd">          A list of positions (row, col) of all mines on the board.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">max_size_board</span>  <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">max_size_board</span> <span class="o">=</span> <span class="mi">100</span>
 
-    <span class="c1">#check validity of board dimensions</span>
-    <span class="k">if</span> <span class="n">board_columns</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="p">:</span>
+    <span class="c1"># check validity of board dimensions</span>
+    <span class="k">if</span> <span class="n">board_columns</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error number of column is not valid&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">board_rows</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">board_rows</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error number of rows is not valid&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">board_columns</span><span class="o">.</span><span class="n">is_integer</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error number of columns is not an integer&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">board_rows</span><span class="o">.</span><span class="n">is_integer</span><span class="p">():</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error number of rows is not an integer&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">board_columns</span> <span class="o">&gt;</span><span class="n">max_size_board</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">board_columns</span> <span class="o">&gt;</span> <span class="n">max_size_board</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error number of columns is too large (over &quot;</span> <span class="o">+</span> <span class="n">max_size_board</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">board_rows</span> <span class="o">&gt;</span> <span class="n">max_size_board</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error number of rows is too large (over &quot;</span> <span class="o">+</span> <span class="n">max_size_board</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
 
-
-    <span class="c1">#initialize the board with 0</span>
-    <span class="c1">#board[row_number][column_number]</span>
+    <span class="c1"># initialize the board with 0</span>
+    <span class="c1"># board[row_number][column_number]</span>
     <span class="n">board</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">board_columns</span><span class="p">)]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">board_rows</span><span class="p">)]</span>
 
-    <span class="c1">#place the mine randomly with a probability of 0.1</span>
+    <span class="c1"># place the mine randomly with a probability of 0.1</span>
     <span class="n">probability_of_mine</span> <span class="o">=</span> <span class="mf">0.1</span>
     <span class="n">list_of_mines</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">board_columns</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">board_rows</span><span class="p">):</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">probability_of_mine</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">probability_of_mine</span><span class="p">:</span>
                 <span class="n">list_of_mines</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">pass</span>
 
-    <span class="c1">#add the count of the number of mine around each case by adding 1 around each mine when we are not at the edge of the board</span>
+    <span class="c1"># add the count of the number of mine around each case by adding 1 around each mine when we are not at the edge of the board</span>
     <span class="k">for</span> <span class="n">mine_position</span> <span class="ow">in</span> <span class="n">list_of_mines</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">board_columns</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">board_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">board_columns</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">board_rows</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">board_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">board_rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">board_columns</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">board_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">board</span><span class="p">,</span> <span class="n">list_of_mines</span></div>
+
 
 
 <div class="viewcode-block" id="print_board">
@@ -164,13 +165,13 @@
 
     <span class="n">board_to_print</span> <span class="o">=</span> <span class="n">board</span>
     <span class="k">for</span> <span class="n">mine_position</span> <span class="ow">in</span> <span class="n">list_of_mines</span><span class="p">:</span>
-        <span class="n">board_to_print</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
-    
+        <span class="n">board_to_print</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
+
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">board_to_print</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">()</span>
-    
+
     <span class="nb">print</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">list_of_mines</span><span class="p">)</span></div>
 
@@ -178,7 +179,9 @@
 
 <div class="viewcode-block" id="print_board_in_game">
 <a class="viewcode-back" href="../board.html#board.print_board_in_game">[docs]</a>
-<span class="k">def</span> <span class="nf">print_board_in_game</span><span class="p">(</span><span class="n">board</span><span class="p">,</span> <span class="n">list_of_mines</span><span class="p">,</span> <span class="n">list_of_revealed_cases</span><span class="p">,</span> <span class="n">list_annotated_cases</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">print_board_in_game</span><span class="p">(</span>
+    <span class="n">board</span><span class="p">,</span> <span class="n">list_of_mines</span><span class="p">,</span> <span class="n">list_of_revealed_cases</span><span class="p">,</span> <span class="n">list_annotated_cases</span>
+<span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Print the game board in the terminal.</span>
 
@@ -193,39 +196,38 @@
 <span class="sd">    list_annotated_cases : list of tuple of int</span>
 <span class="sd">        List of the positions (row, col) of the annotated cases.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
-    <span class="c1">#create board_to_print that contains X for the location of the mine and an integer that represent the number of mine around the case</span>
+
+    <span class="c1"># create board_to_print that contains X for the location of the mine and an integer that represent the number of mine around the case</span>
     <span class="n">board_to_print</span> <span class="o">=</span> <span class="n">board</span>
     <span class="k">for</span> <span class="n">mine_position</span> <span class="ow">in</span> <span class="n">list_of_mines</span><span class="p">:</span>
-        <span class="n">board_to_print</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+        <span class="n">board_to_print</span><span class="p">[</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">mine_position</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;X&quot;</span>
 
     <span class="n">temp_board</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="c1">#Fill temp_board with &quot;°&quot; if cell is annotated, &quot;*&quot; is cell is not revealed. Else, the value of board_to_print</span>
+    <span class="c1"># Fill temp_board with &quot;°&quot; if cell is annotated, &quot;*&quot; is cell is not revealed. Else, the value of board_to_print</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board_to_print</span><span class="p">)):</span>
         <span class="n">new_row</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board_to_print</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
-            <span class="c1">#If the cell is revealed</span>
+            <span class="c1"># If the cell is revealed</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="ow">in</span> <span class="n">list_of_revealed_cases</span><span class="p">:</span>
                 <span class="n">new_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">board_to_print</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c1">#If the cell is annotated</span>
+                <span class="c1"># If the cell is annotated</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="ow">in</span> <span class="n">list_annotated_cases</span><span class="p">:</span>
                     <span class="n">new_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;°&quot;</span><span class="p">)</span>
-                <span class="c1">#If the cell is not revealed</span>
+                <span class="c1"># If the cell is not revealed</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">new_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
         <span class="n">temp_board</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_row</span><span class="p">)</span>
 
     <span class="n">board_to_print</span> <span class="o">=</span> <span class="n">temp_board</span>
 
-
-    <span class="c1">#Add a space at the end of each caracter for readability</span>
+    <span class="c1"># Add a space at the end of each caracter for readability</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">board_to_print</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">()</span>
-    
+
     <span class="nb">print</span><span class="p">()</span></div>
 
 </pre></div>
