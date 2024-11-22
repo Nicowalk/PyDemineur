@@ -48,6 +48,7 @@
 <li class="toctree-l2"><a class="reference internal" href="board.html">board module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pydemineur.html">pydemineur module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">utilities module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#utilities.check_board_dimensions"><code class="docutils literal notranslate"><span class="pre">check_board_dimensions()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utilities.is_already_revealed"><code class="docutils literal notranslate"><span class="pre">is_already_revealed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utilities.is_end_of_game"><code class="docutils literal notranslate"><span class="pre">is_end_of_game()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#utilities.is_there_a_mine"><code class="docutils literal notranslate"><span class="pre">is_there_a_mine()</span></code></a></li>
@@ -85,6 +86,27 @@
              
   <section id="module-utilities">
 <span id="utilities-module"></span><h1>utilities module<a class="headerlink" href="#module-utilities" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="utilities.check_board_dimensions">
+<span class="sig-prename descclassname"><span class="pre">utilities.</span></span><span class="sig-name descname"><span class="pre">check_board_dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board_rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">board_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size_board</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utilities.html#check_board_dimensions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.check_board_dimensions" title="Link to this definition"></a></dt>
+<dd><p>Check the validity of board dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>board_rows</strong> (<em>int</em>) – Number of rows of the board.</p></li>
+<li><p><strong>board_columns</strong> (<em>int</em>) – Number of columns of the board.</p></li>
+<li><p><strong>max_size_board</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum allowed size for the board (default is 100).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the dimensions are valid, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="utilities.is_already_revealed">
 <span class="sig-prename descclassname"><span class="pre">utilities.</span></span><span class="sig-name descname"><span class="pre">is_already_revealed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row_selection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_selection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_cases_revealed</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utilities.html#is_already_revealed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.is_already_revealed" title="Link to this definition"></a></dt>
