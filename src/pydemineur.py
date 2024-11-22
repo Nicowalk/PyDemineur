@@ -38,8 +38,6 @@ while not is_game_finished:
             case_type = reveal_case(
                 row_selection,
                 col_selection,
-                number_of_rows,
-                number_of_columns,
                 board,
                 list_of_mines,
                 revealed_cases,
