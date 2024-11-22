@@ -5,8 +5,6 @@ from utilities import is_there_a_mine, reveal_neighbor_0_cases
 def reveal_case(
     row_selection,
     column_selection,
-    number_of_rows,
-    number_of_columns,
     board,
     list_of_mines,
     cases_revealed,
@@ -20,10 +18,6 @@ def reveal_case(
         Selected row by the user.
     column_selection : int
         Selected column by the user.
-    number_of_rows : int
-        Total number of rows in the board.
-    number_of_columns : int
-        Total number of columns in the board.
     board : list of list of int
         2D list containing integers with the number of mines around each case.
     list_of_mines : list of tuple of int
@@ -36,6 +30,9 @@ def reveal_case(
     bool
         True if the case contains a mine, False if it doesn't.
     """
+
+    number_of_rows = len(board)
+    number_of_columns = len(board[0])
 
     # check if the revealed case contain a mine
     if is_there_a_mine(row_selection, column_selection, list_of_mines):
