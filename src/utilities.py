@@ -139,3 +139,41 @@ def is_end_of_game(
         return 1
     else:
         return 0
+    
+def check_board_dimensions(board_rows, board_columns, max_size_board=100) -> bool:
+    """
+    Check the validity of board dimensions.
+
+    Parameters
+    ----------
+    board_rows : int
+        Number of rows of the board.
+    board_columns : int
+        Number of columns of the board.
+    max_size_board : int, optional
+        Maximum allowed size for the board (default is 100).
+
+    Returns
+    -------
+    bool
+        True if the dimensions are valid, False otherwise.
+    """
+    if board_columns < 1:
+        print("error number of column is not valid")
+        return False
+    if board_rows < 1:
+        print("error number of rows is not valid")
+        return False
+    if not isinstance(board_columns, int):
+        print("error number of columns is not an integer")
+        return False
+    if not isinstance(board_rows, int):
+        print("error number of rows is not an integer")
+        return False
+    if board_columns > max_size_board:
+        print(f"error number of columns is too large (over {max_size_board})")
+        return False
+    if board_rows > max_size_board:
+        print(f"error number of rows is too large (over {max_size_board})")
+        return False
+    return True
