@@ -1,4 +1,4 @@
-"""Module providing usefull functions to check conditions."""
+"""Module providing functions related to user inputs and actions."""
 from utilities import is_there_a_mine, reveal_neighbor_0_cases
 
 
@@ -46,8 +46,6 @@ def reveal_case(
         reveal_neighbor_0_cases(
             row_selection,
             column_selection,
-            number_of_rows,
-            number_of_columns,
             board,
             cases_revealed,
         )

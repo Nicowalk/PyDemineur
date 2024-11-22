@@ -1,3 +1,5 @@
+"""Module providing useful functions to check validity of variables."""
+
 def is_there_a_mine(row_selection, column_selection, list_of_mines) -> bool:
     """
     Check if there is a mine in the selected position.
@@ -53,8 +55,6 @@ def is_already_revealed(
 def reveal_neighbor_0_cases(
     row_selection,
     column_selection,
-    number_of_rows,
-    number_of_columns,
     board,
     cases_revealed,
 ):
@@ -67,15 +67,13 @@ def reveal_neighbor_0_cases(
         Row selected by the user.
     column_selection : int
         Column selected by the user.
-    number_of_rows : int
-        Number of rows of the board.
-    number_of_columns : int
-        Number of columns of the board.
     board : list of list of int
         2D list containing integers with the number of mines around each case.
     cases_revealed : list of tuple of int
         List of positions (row, col) of the cases revealed in the board.
     """
+    number_of_rows = len(board)
+    number_of_columns = len(board[0])
 
     # stop if the position select is outside the board
     if (
@@ -90,8 +88,8 @@ def reveal_neighbor_0_cases(
     # stop if the value is not 0,  else, the position is added to the list of revealed cases
     if board[row_selection][column_selection] != 0:
         return
-    else:
-        cases_revealed.append((row_selection, column_selection))
+
+    cases_revealed.append((row_selection, column_selection))
 
     # List of the directions to check the neighbor cases (only top, right, bot, left; not diagonal)
     directions = [(-1, 0), (0, -1), (0, 1), (1, 0)]
@@ -101,8 +99,6 @@ def reveal_neighbor_0_cases(
         reveal_neighbor_0_cases(
             row_selection + direction_row,
             column_selection + direction_col,
-            number_of_rows,
-            number_of_columns,
             board,
             cases_revealed,
         )
@@ -131,15 +127,17 @@ def is_end_of_game(
         True if the player has found all the cases and finished the game, else False.
     """
 
-    # the numeber of remaining cases to find is the total number of cases minus the number of cases with a mine minus the number of cases we have already found
+    # the numeber of remaining cases to find is the total number of cases minus the number
+    # of cases with a mine minus the number of cases we have already found
     number_of_remaining_cases_to_find = (
         number_of_columns * number_of_rows - number_of_revealed_cases - number_of_mines
     )
     if number_of_remaining_cases_to_find == 0:
         return 1
-    else:
-        return 0
-    
+
+    return 0
+
+
 def check_board_dimensions(board_rows, board_columns, max_size_board=100) -> bool:
     """
     Check the validity of board dimensions.
@@ -158,22 +156,24 @@ def check_board_dimensions(board_rows, board_columns, max_size_board=100) -> boo
     bool
         True if the dimensions are valid, False otherwise.
     """
+    errors = []
+
     if board_columns < 1:
-        print("error number of column is not valid")
-        return False
+        errors.append("error: number of columns is not valid")
     if board_rows < 1:
-        print("error number of rows is not valid")
-        return False
+        errors.append("error: number of rows is not valid")
     if not isinstance(board_columns, int):
-        print("error number of columns is not an integer")
-        return False
+        errors.append("error: number of columns is not an integer")
     if not isinstance(board_rows, int):
-        print("error number of rows is not an integer")
-        return False
+        errors.append("error: number of rows is not an integer")
     if board_columns > max_size_board:
-        print(f"error number of columns is too large (over {max_size_board})")
-        return False
+        errors.append(f"error: number of columns is too large (over {max_size_board})")
     if board_rows > max_size_board:
-        print(f"error number of rows is too large (over {max_size_board})")
+        errors.append(f"error: number of rows is too large (over {max_size_board})")
+
+    if errors:
+        for error in errors:
+            print(error)
         return False
+
     return True

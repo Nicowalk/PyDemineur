@@ -1,4 +1,4 @@
-"""Module providing random placement of mines."""
+"""Module providing functions to create and print the game board."""
 import random
 from utilities import check_board_dimensions
 
