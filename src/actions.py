@@ -31,9 +31,6 @@ def reveal_case(
         True if the case contains a mine, False if it doesn't.
     """
 
-    number_of_rows = len(board)
-    number_of_columns = len(board[0])
-
     # check if the revealed case contain a mine
     if is_there_a_mine(row_selection, column_selection, list_of_mines):
         # If the revealed case is a mine return 1
