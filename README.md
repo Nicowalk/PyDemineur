@@ -2,6 +2,11 @@
 
 PyDemineur is a simple Minesweeper game implemented in Python. This project is designed for educational purposes and demonstrates basic game logic, user interaction and correct programming.
 
+## Badges
+
+![Test Status](https://github.com/Nicowalk/PyDemineur/actions/workflows/ci.yml/badge.svg)
+![Coverage Status](https://coveralls.io/repos/github/Nicowalk/PyDemineur/badge.svg?branch=main)
+
 ## Documentation
 
 The full documentation can be found here :
