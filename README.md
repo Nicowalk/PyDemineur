@@ -4,6 +4,7 @@ PyDemineur is a simple Minesweeper game implemented in Python. This project is d
 
 ## Documentation
 
+The full documentation can be found here :
 https://nicowalk.github.io/PyDemineur/
 
 ## Features
@@ -19,7 +20,7 @@ https://nicowalk.github.io/PyDemineur/
 1. Clone the repository:
     ```sh
     git clone https://github.com/nicowalk/pydemineur.git
-    cd pydemineur
+    cd PyDemineur
     ```
 
 ## Usage
