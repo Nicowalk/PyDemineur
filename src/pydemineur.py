@@ -1,8 +1,9 @@
 """Main file that contains the game loop for Minesweeper."""
 
-from board import create_board, print_board, print_board_in_game
+from board import create_board, print_board_in_game
 from actions import action_selection, case_selection, reveal_case
 from utilities import is_already_revealed, is_end_of_game
+
 
 def game_run(number_of_rows=4, number_of_columns=4):
     """
@@ -17,10 +18,10 @@ def game_run(number_of_rows=4, number_of_columns=4):
     revealed_cases = []
     annotated_cases = []
     print_board_in_game(board, list_of_mines, revealed_cases, annotated_cases)
-    
+
     # Condition of the end of the game
     game_finished = False
-    result = False #True if win, False if lose
+    result = False  # True if win, False if lose
 
     # GAME LOOP
     while not game_finished:
@@ -80,4 +81,4 @@ def game_run(number_of_rows=4, number_of_columns=4):
 
 
 if __name__ == "__main__":
-    game_run(10,10)
+    game_run(10, 10)
