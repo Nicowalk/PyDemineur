@@ -1,4 +1,5 @@
 """Module providing functions related to user inputs and actions."""
+
 from utilities import is_there_a_mine, reveal_neighbor_0_cases
 
 

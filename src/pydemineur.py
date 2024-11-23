@@ -1,7 +1,9 @@
 """Main file that contains the game loop for Minesweeper."""
+
 from board import create_board, print_board, print_board_in_game
 from actions import action_selection, case_selection, reveal_case
 from utilities import is_already_revealed, is_end_of_game
+
 
 def main():
     """
@@ -75,6 +77,7 @@ def main():
             game_finished = True
 
     print("GAME OVER")
+
 
 if __name__ == "__main__":
     main()

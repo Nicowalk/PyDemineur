@@ -1,5 +1,6 @@
 """Module providing useful functions to check validity of variables."""
 
+
 def is_there_a_mine(row_selection, column_selection, list_of_mines) -> bool:
     """
     Check if there is a mine in the selected position.

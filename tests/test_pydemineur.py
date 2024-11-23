@@ -22,8 +22,8 @@ def test_reveal_case():
     list_of_mines = [(0, 2), (2, 2)]
     cases_revealed = []
 
-    assert reveal_case(0, 0, 3, 3, board, list_of_mines, cases_revealed) == False
-    assert reveal_case(0, 2, 3, 3, board, list_of_mines, cases_revealed) == True
+    assert reveal_case(0, 0, board, list_of_mines, cases_revealed) == False
+    assert reveal_case(0, 2, board, list_of_mines, cases_revealed) == True
 
 
 def test_is_already_revealed():

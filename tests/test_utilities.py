@@ -25,7 +25,7 @@ def test_is_already_revealed():
 def test_reveal_neighbor_0_cases():
     board = [[0, 1, -1], [1, 2, 1], [0, 1, -1]]
     cases_revealed = []
-    reveal_neighbor_0_cases(0, 0, 3, 3, board, cases_revealed)
+    reveal_neighbor_0_cases(0, 0, board, cases_revealed)
     assert (0, 0) in cases_revealed
 
 
