@@ -86,6 +86,7 @@
              
   <section id="module-utilities">
 <span id="utilities-module"></span><h1>utilities module<a class="headerlink" href="#module-utilities" title="Link to this heading"></a></h1>
+<p>Module providing useful functions to check validity of variables.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="utilities.check_board_dimensions">
 <span class="sig-prename descclassname"><span class="pre">utilities.</span></span><span class="sig-name descname"><span class="pre">check_board_dimensions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board_rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">board_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size_board</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/utilities.html#check_board_dimensions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.check_board_dimensions" title="Link to this definition"></a></dt>
@@ -173,15 +174,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="utilities.reveal_neighbor_0_cases">
-<span class="sig-prename descclassname"><span class="pre">utilities.</span></span><span class="sig-name descname"><span class="pre">reveal_neighbor_0_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row_selection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_selection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_rows</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">board</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cases_revealed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities.html#reveal_neighbor_0_cases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.reveal_neighbor_0_cases" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">utilities.</span></span><span class="sig-name descname"><span class="pre">reveal_neighbor_0_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row_selection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_selection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">board</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cases_revealed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities.html#reveal_neighbor_0_cases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.reveal_neighbor_0_cases" title="Link to this definition"></a></dt>
 <dd><p>Reveal the group of neighboring cases with a value of 0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>row_selection</strong> (<em>int</em>) – Row selected by the user.</p></li>
 <li><p><strong>column_selection</strong> (<em>int</em>) – Column selected by the user.</p></li>
-<li><p><strong>number_of_rows</strong> (<em>int</em>) – Number of rows of the board.</p></li>
-<li><p><strong>number_of_columns</strong> (<em>int</em>) – Number of columns of the board.</p></li>
 <li><p><strong>board</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int</em>) – 2D list containing integers with the number of mines around each case.</p></li>
 <li><p><strong>cases_revealed</strong> (<em>list</em><em> of </em><em>tuple</em><em> of </em><em>int</em>) – List of positions (row, col) of the cases revealed in the board.</p></li>
 </ul>
