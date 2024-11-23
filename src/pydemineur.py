@@ -4,26 +4,23 @@ from board import create_board, print_board, print_board_in_game
 from actions import action_selection, case_selection, reveal_case
 from utilities import is_already_revealed, is_end_of_game
 
-
-def main():
+def game_run(number_of_rows=4, number_of_columns=4):
     """
     Main function to run the Minesweeper game loop.
     """
-    # Size of the board
-    number_of_rows = 10
-    number_of_columns = 10
 
+    print("GAME START")
     # Create the game board
     board, list_of_mines = create_board(number_of_rows, number_of_columns)
-
-    print_board(board, list_of_mines)
 
     # Game data: revealed cases and annotated cases
     revealed_cases = []
     annotated_cases = []
-
+    print_board_in_game(board, list_of_mines, revealed_cases, annotated_cases)
+    
     # Condition of the end of the game
     game_finished = False
+    result = False #True if win, False if lose
 
     # GAME LOOP
     while not game_finished:
@@ -71,13 +68,16 @@ def main():
         ):
             print("WINNER")
             game_finished = True
+            result = 1
 
         if case_type == 1:
             print("LOSER")
             game_finished = True
+            result = 0
 
     print("GAME OVER")
+    return result
 
 
 if __name__ == "__main__":
-    main()
+    game_run(10,10)
