@@ -37,7 +37,7 @@ https://nicowalk.github.io/PyDemineur/
 
 Run the game using the following command:
 ```sh
-python pydemineur.py
+py .\src\pydemineur.py
 ```
 
 
