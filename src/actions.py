@@ -66,8 +66,13 @@ def action_selection():
     select_or_annotate = -1
     # while the input is not 0 or 1
     while select_or_annotate not in (0, 1):
-        print("0 to reveal a cell, 1 to annotate")
-        select_or_annotate = int(input())
+        try:
+            print("Please select an action:")
+            print("0 - Reveal a cell")
+            print("1 - Annotate a cell")
+            select_or_annotate = int(input())
+        except ValueError:
+            print("Invalid input. Please enter 0 or 1.")
 
     return select_or_annotate
 
