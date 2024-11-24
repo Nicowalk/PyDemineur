@@ -57,4 +57,6 @@ def test_check_board_dimensions():
     assert check_board_dimensions(3, 0) == False
     assert check_board_dimensions(3, 101) == False
     assert check_board_dimensions(101, 3) == False
+    assert check_board_dimensions(2.5, 3) == False
+    assert check_board_dimensions(3, 2.5) == False
     assert check_board_dimensions(3, 3, max_size_board=2) == False
