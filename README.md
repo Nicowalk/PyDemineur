@@ -28,12 +28,16 @@ https://nicowalk.github.io/PyDemineur/
     git clone https://github.com/Nicowalk/PyDemineur.git
     cd PyDemineur
     ```
-
+2. Install the dependencies:
+    ```sh
+    pip install -r requirements.txt
+    ```
+    
 ## Usage
 
 Run the game using the following command:
 ```sh
-python [pydemineur.py](http://_vscodecontentref_/1)
+python pydemineur.py
 ```
 
 
@@ -49,6 +53,8 @@ src/ </br>
 
 
 ## How to Play
+
+![Screenshot](docs/gameplay_example.png)
 
 1. The game starts by displaying the initial game board.
 2. You will be prompted to choose between:
