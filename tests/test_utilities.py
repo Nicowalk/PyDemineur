@@ -2,7 +2,7 @@ import pytest
 from utilities import (
     is_there_a_mine,
     is_already_revealed,
-    reveal_neighbor_0_cases,
+    reveal_neighbor_0_cells,
     is_end_of_game,
     check_board_dimensions,
 )
@@ -15,35 +15,35 @@ def test_is_there_a_mine():
 
 
 def test_is_already_revealed():
-    list_of_cases_revealed = [(0, 0), (1, 1)]
-    assert is_already_revealed(0, 0, list_of_cases_revealed) == True
-    assert is_already_revealed(2, 2, list_of_cases_revealed) == False
+    list_of_cells_revealed = [(0, 0), (1, 1)]
+    assert is_already_revealed(0, 0, list_of_cells_revealed) == True
+    assert is_already_revealed(2, 2, list_of_cells_revealed) == False
 
 
-def test_reveal_neighbor_0_cases():
+def test_reveal_neighbor_0_cells():
     board = [[0, 0, -1], [1, 2, 1], [0, 1, -1]]
-    cases_revealed = []
-    reveal_neighbor_0_cases(0, 0, board, cases_revealed)
-    assert (0, 0) in cases_revealed
-    assert not (1, 0) in cases_revealed
-    assert (0, 1) in cases_revealed
+    cells_revealed = []
+    reveal_neighbor_0_cells(0, 0, board, cells_revealed)
+    assert (0, 0) in cells_revealed
+    assert not (1, 0) in cells_revealed
+    assert (0, 1) in cells_revealed
 
-    # Test edge cases
-    cases_revealed = []
-    reveal_neighbor_0_cases(-1, 0, board, cases_revealed)
-    assert cases_revealed == []
+    # Test edge cells
+    cells_revealed = []
+    reveal_neighbor_0_cells(-1, 0, board, cells_revealed)
+    assert cells_revealed == []
 
-    cases_revealed = []
-    reveal_neighbor_0_cases(0, -1, board, cases_revealed)
-    assert cases_revealed == []
+    cells_revealed = []
+    reveal_neighbor_0_cells(0, -1, board, cells_revealed)
+    assert cells_revealed == []
 
-    cases_revealed = []
-    reveal_neighbor_0_cases(3, 0, board, cases_revealed)
-    assert cases_revealed == []
+    cells_revealed = []
+    reveal_neighbor_0_cells(3, 0, board, cells_revealed)
+    assert cells_revealed == []
 
-    cases_revealed = []
-    reveal_neighbor_0_cases(0, 3, board, cases_revealed)
-    assert cases_revealed == []
+    cells_revealed = []
+    reveal_neighbor_0_cells(0, 3, board, cells_revealed)
+    assert cells_revealed == []
 
 
 def test_is_end_of_game():

@@ -27,10 +27,10 @@ def is_there_a_mine(row_selection, column_selection, list_of_mines) -> bool:
 
 
 def is_already_revealed(
-    row_selection, column_selection, list_of_cases_revealed
+    row_selection, column_selection, list_of_cells_revealed
 ) -> bool:
     """
-    Check if the case has already been revealed.
+    Check if the cell has already been revealed.
 
     Parameters
     ----------
@@ -38,29 +38,29 @@ def is_already_revealed(
         Row selected by the user.
     column_selection : int
         Column selected by the user.
-    list_of_cases_revealed : list of tuple of int
-        List of positions (row, col) of the cases revealed in the board.
+    list_of_cells_revealed : list of tuple of int
+        List of positions (row, col) of the cells revealed in the board.
 
     Returns
     -------
     bool
-        True if the case has already been revealed, False if it is not.
+        True if the cell has already been revealed, False if it is not.
     """
 
-    for case_position in list_of_cases_revealed:
-        if case_position == (row_selection, column_selection):
+    for cell_position in list_of_cells_revealed:
+        if cell_position == (row_selection, column_selection):
             return True
     return False
 
 
-def reveal_neighbor_0_cases(
+def reveal_neighbor_0_cells(
     row_selection,
     column_selection,
     board,
-    cases_revealed,
+    cells_revealed,
 ):
     """
-    Reveal the group of neighboring cases with a value of 0.
+    Reveal the group of neighboring cells with a value of 0.
 
     Parameters
     ----------
@@ -69,9 +69,9 @@ def reveal_neighbor_0_cases(
     column_selection : int
         Column selected by the user.
     board : list of list of int
-        2D list containing integers with the number of mines around each case.
-    cases_revealed : list of tuple of int
-        List of positions (row, col) of the cases revealed in the board.
+        2D list containing integers with the number of mines around each cell.
+    cells_revealed : list of tuple of int
+        List of positions (row, col) of the cells revealed in the board.
     """
     number_of_rows = len(board)
     number_of_columns = len(board[0])
@@ -82,31 +82,31 @@ def reveal_neighbor_0_cases(
         or row_selection >= number_of_rows
         or column_selection < 0
         or column_selection >= number_of_columns
-        or (row_selection, column_selection) in cases_revealed
+        or (row_selection, column_selection) in cells_revealed
     ):
         return
 
-    # stop if the value is not 0,  else, the position is added to the list of revealed cases
+    # stop if the value is not 0,  else, the position is added to the list of revealed cells
     if board[row_selection][column_selection] != 0:
         return
 
-    cases_revealed.append((row_selection, column_selection))
+    cells_revealed.append((row_selection, column_selection))
 
-    # List of the directions to check the neighbor cases (only top, right, bot, left; not diagonal)
+    # List of the directions to check the neighbor cells (only top, right, bot, left; not diagonal)
     directions = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 
     # Recursive call of the fonctions in the directions specified in the list directions
     for direction_row, direction_col in directions:
-        reveal_neighbor_0_cases(
+        reveal_neighbor_0_cells(
             row_selection + direction_row,
             column_selection + direction_col,
             board,
-            cases_revealed,
+            cells_revealed,
         )
 
 
 def is_end_of_game(
-    number_of_rows, number_of_columns, number_of_mines, number_of_revealed_cases
+    number_of_rows, number_of_columns, number_of_mines, number_of_revealed_cells
 ) -> bool:
     """
     Check if the player has completed the game.
@@ -119,21 +119,21 @@ def is_end_of_game(
         Number of columns of the game board.
     number_of_mines : int
         Number of mines in the game.
-    number_of_revealed_cases : int
-        Number of cases that the player has found during the game.
+    number_of_revealed_cells : int
+        Number of cells that the player has found during the game.
 
     Returns
     -------
     bool
-        True if the player has found all the cases and finished the game, else False.
+        True if the player has found all the cells and finished the game, else False.
     """
 
-    # the numeber of remaining cases to find is the total number of cases minus the number
-    # of cases with a mine minus the number of cases we have already found
-    number_of_remaining_cases_to_find = (
-        number_of_columns * number_of_rows - number_of_revealed_cases - number_of_mines
+    # the numeber of remaining cells to find is the total number of cells minus the number
+    # of cells with a mine minus the number of cells we have already found
+    number_of_remaining_cells_to_find = (
+        number_of_columns * number_of_rows - number_of_revealed_cells - number_of_mines
     )
-    if number_of_remaining_cases_to_find == 0:
+    if number_of_remaining_cells_to_find == 0:
         return 1
 
     return 0

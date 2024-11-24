@@ -48,7 +48,7 @@ def create_board(board_rows: int, board_columns: int) -> tuple:
             else:
                 pass
 
-    # add the count of the number of mine around each case by adding 1 around each mine
+    # add the count of the number of mine around each cell by adding 1 around each mine
     # when we are not at the edge of the board
     for mine_position in list_of_mines:
         row, col = mine_position
@@ -69,7 +69,7 @@ def print_board(board, list_of_mines):
     Parameters
     ----------
     board : list of list of int
-        2D array of the board with integers that represent the number of mines around each case.
+        2D array of the board with integers that represent the number of mines around each cell.
     list_of_mines : list of tuple of int
         List of positions (row, col) of the mines.
     """
@@ -88,7 +88,7 @@ def print_board(board, list_of_mines):
 
 
 def print_board_in_game(
-    board, list_of_mines, list_of_revealed_cases, list_annotated_cases
+    board, list_of_mines, list_of_revealed_cells, list_annotated_cells
 ):
     """
     Print the game board in the terminal.
@@ -96,17 +96,17 @@ def print_board_in_game(
     Parameters
     ----------
     board : list of list of int
-        2D array of the board with integers that represent the number of mines around each case.
+        2D array of the board with integers that represent the number of mines around each cell.
     list_of_mines : list of tuple of int
         List of positions (row, col) of the mines.
-    list_of_revealed_cases : list of tuple of int
-        List of the positions (row, col) of revealed cases.
-    list_annotated_cases : list of tuple of int
-        List of the positions (row, col) of the annotated cases.
+    list_of_revealed_cells : list of tuple of int
+        List of the positions (row, col) of revealed cells.
+    list_annotated_cells : list of tuple of int
+        List of the positions (row, col) of the annotated cells.
     """
 
     # create board_to_print that contains X for the location of the mine and an integer that
-    # represent the number of mine around the case
+    # represent the number of mine around the cell
     board_to_print = board
     for mine_position in list_of_mines:
         board_to_print[mine_position[0]][mine_position[1]] = "X"
@@ -119,11 +119,11 @@ def print_board_in_game(
         new_row = []
         for col_index, cell in enumerate(row):
             # If the cell is revealed
-            if (row_index, col_index) in list_of_revealed_cases:
+            if (row_index, col_index) in list_of_revealed_cells:
                 new_row.append(cell)
             else:
                 # If the cell is annotated
-                if (row_index, col_index) in list_annotated_cases:
+                if (row_index, col_index) in list_annotated_cells:
                     new_row.append("°")
                 # If the cell is not revealed
                 else:

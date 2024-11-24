@@ -2,12 +2,12 @@ import sys
 
 sys.path.insert(1, "./src")
 import pytest
-from actions import reveal_case
+from actions import reveal_cell
 from board import create_board
 from utilities import (
     is_there_a_mine,
     is_already_revealed,
-    reveal_neighbor_0_cases,
+    reveal_neighbor_0_cells,
     is_end_of_game,
 )
 from pydemineur import game_run
@@ -29,19 +29,19 @@ def test_is_end_of_game():
     assert is_end_of_game(4, 4, 2, 13) == False
 
 
-def test_reveal_case():
+def test_reveal_cell():
     board = [[0, 1, -1], [1, 2, 1], [0, 1, -1]]
     list_of_mines = [(0, 2), (2, 2)]
-    cases_revealed = []
+    cells_revealed = []
 
-    assert reveal_case(0, 0, board, list_of_mines, cases_revealed) == False
-    assert reveal_case(0, 2, board, list_of_mines, cases_revealed) == True
+    assert reveal_cell(0, 0, board, list_of_mines, cells_revealed) == False
+    assert reveal_cell(0, 2, board, list_of_mines, cells_revealed) == True
 
 
 def test_is_already_revealed():
-    list_of_cases_revealed = [(0, 0), (1, 1)]
-    assert is_already_revealed(0, 0, list_of_cases_revealed) == True
-    assert is_already_revealed(2, 2, list_of_cases_revealed) == False
+    list_of_cells_revealed = [(0, 0), (1, 1)]
+    assert is_already_revealed(0, 0, list_of_cells_revealed) == True
+    assert is_already_revealed(2, 2, list_of_cells_revealed) == False
 
 
 def test_is_there_a_mine():
@@ -50,14 +50,14 @@ def test_is_there_a_mine():
     assert is_there_a_mine(1, 1, list_of_mines) == False
 
 
-def test_reveal_neighbor_0_cases():
+def test_reveal_neighbor_0_cells():
     board = [[0, 0, -1], [1, 2, 1], [0, 1, -1]]
-    cases_revealed = []
-    reveal_neighbor_0_cases(0, 0, board, cases_revealed)
-    assert (0, 0) in cases_revealed
-    assert (0, 1) in cases_revealed
-    assert (1, 0) not in cases_revealed
-    assert (2, 0) not in cases_revealed
+    cells_revealed = []
+    reveal_neighbor_0_cells(0, 0, board, cells_revealed)
+    assert (0, 0) in cells_revealed
+    assert (0, 1) in cells_revealed
+    assert (1, 0) not in cells_revealed
+    assert (2, 0) not in cells_revealed
 
 
 def test_win():
@@ -66,7 +66,7 @@ def test_win():
     with patch(
         "builtins.input",
         side_effect=[
-            "0",  # action reveal a case
+            "0",  # action reveal a cell
             "0",  # row
             "0",  # column
             "0",

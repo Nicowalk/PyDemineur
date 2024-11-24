@@ -120,7 +120,7 @@ A list of positions (row, col) of all mines on the board.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>board</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int</em>) – 2D array of the board with integers that represent the number of mines around each case.</p></li>
+<li><p><strong>board</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int</em>) – 2D array of the board with integers that represent the number of mines around each cell.</p></li>
 <li><p><strong>list_of_mines</strong> (<em>list</em><em> of </em><em>tuple</em><em> of </em><em>int</em>) – List of positions (row, col) of the mines.</p></li>
 </ul>
 </dd>
@@ -129,15 +129,15 @@ A list of positions (row, col) of all mines on the board.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="board.print_board_in_game">
-<span class="sig-prename descclassname"><span class="pre">board.</span></span><span class="sig-name descname"><span class="pre">print_board_in_game</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_mines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_revealed_cases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_annotated_cases</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/board.html#print_board_in_game"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#board.print_board_in_game" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">board.</span></span><span class="sig-name descname"><span class="pre">print_board_in_game</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_mines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_revealed_cells</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_annotated_cells</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/board.html#print_board_in_game"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#board.print_board_in_game" title="Link to this definition"></a></dt>
 <dd><p>Print the game board in the terminal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>board</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int</em>) – 2D array of the board with integers that represent the number of mines around each case.</p></li>
+<li><p><strong>board</strong> (<em>list</em><em> of </em><em>list</em><em> of </em><em>int</em>) – 2D array of the board with integers that represent the number of mines around each cell.</p></li>
 <li><p><strong>list_of_mines</strong> (<em>list</em><em> of </em><em>tuple</em><em> of </em><em>int</em>) – List of positions (row, col) of the mines.</p></li>
-<li><p><strong>list_of_revealed_cases</strong> (<em>list</em><em> of </em><em>tuple</em><em> of </em><em>int</em>) – List of the positions (row, col) of revealed cases.</p></li>
-<li><p><strong>list_annotated_cases</strong> (<em>list</em><em> of </em><em>tuple</em><em> of </em><em>int</em>) – List of the positions (row, col) of the annotated cases.</p></li>
+<li><p><strong>list_of_revealed_cells</strong> (<em>list</em><em> of </em><em>tuple</em><em> of </em><em>int</em>) – List of the positions (row, col) of revealed cells.</p></li>
+<li><p><strong>list_annotated_cells</strong> (<em>list</em><em> of </em><em>tuple</em><em> of </em><em>int</em>) – List of the positions (row, col) of the annotated cells.</p></li>
 </ul>
 </dd>
 </dl>
