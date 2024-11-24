@@ -97,22 +97,32 @@ def test_lose():
     with patch("builtins.input", side_effect=["0", "0", "2"]):
         assert game_run(4, 4) == 0
 
+
 def test_annotate_and_lose():
     random.seed(1)
-    with patch("builtins.input", side_effect=["1", "0", "2","0", "0", "2"]):
+    with patch("builtins.input", side_effect=["1", "0", "2", "0", "0", "2"]):
         assert game_run(4, 4) == 0
+
 
 def test_already_annotated_and_lose():
     random.seed(1)
-    with patch("builtins.input", side_effect=["1", "0", "2", "1", "0", "2" ,"0", "0", "2"]):
+    with patch(
+        "builtins.input", side_effect=["1", "0", "2", "1", "0", "2", "0", "0", "2"]
+    ):
         assert game_run(4, 4) == 0
+
 
 def test_annotate_revealed_cell_and_lose():
     random.seed(1)
-    with patch("builtins.input", side_effect=["0", "0", "0", "1", "0", "0" ,"0", "0", "2"]):
+    with patch(
+        "builtins.input", side_effect=["0", "0", "0", "1", "0", "0", "0", "0", "2"]
+    ):
         assert game_run(4, 4) == 0
+
 
 def test_reaveal_already_revealed_cell_and_lose():
     random.seed(1)
-    with patch("builtins.input", side_effect=["0", "0", "0", "0", "0", "0" ,"0", "0", "2"]):
+    with patch(
+        "builtins.input", side_effect=["0", "0", "0", "0", "0", "0", "0", "0", "2"]
+    ):
         assert game_run(4, 4) == 0
