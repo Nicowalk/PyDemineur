@@ -142,8 +142,13 @@
     <span class="n">select_or_annotate</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
     <span class="c1"># while the input is not 0 or 1</span>
     <span class="k">while</span> <span class="n">select_or_annotate</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0 to reveal a cell, 1 to annotate&quot;</span><span class="p">)</span>
-        <span class="n">select_or_annotate</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please select an action:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0 - Reveal a cell&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 - Annotate a cell&quot;</span><span class="p">)</span>
+            <span class="n">select_or_annotate</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input. Please enter 0 or 1.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">select_or_annotate</span></div>
 
@@ -169,15 +174,22 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">row_selection</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="c1"># The user select a row number while it is not valid</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">row_selection</span> <span class="o">&lt;</span> <span class="n">number_of_rows</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Select the row between 0 and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">row_selection</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Select the row between 0 and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">row_selection</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input. Please enter an integer.&quot;</span><span class="p">)</span>
 
-    <span class="c1"># The user select a column number while it is valid</span>
     <span class="n">col_selection</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="c1"># The user select a column number while it is not valid</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">col_selection</span> <span class="o">&lt;</span> <span class="n">number_of_columns</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Select the column between 0 and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">col_selection</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Select the column between 0 and &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">number_of_columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">col_selection</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid input. Please enter an integer.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">row_selection</span><span class="p">,</span> <span class="n">col_selection</span></div>
 

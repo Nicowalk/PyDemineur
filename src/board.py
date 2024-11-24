@@ -84,12 +84,11 @@ def print_board(board, list_of_mines):
         print()
 
     print()
+    print("List of all mines")
     print(list_of_mines)
 
 
-def print_board_in_game(
-    board, list_of_mines, list_of_revealed_cells, list_annotated_cells
-):
+def print_board_in_game(board, list_of_revealed_cells, list_annotated_cells):
     """
     Print the game board in the terminal.
 
@@ -97,48 +96,11 @@ def print_board_in_game(
     ----------
     board : list of list of int
         2D array of the board with integers that represent the number of mines around each cell.
-    list_of_mines : list of tuple of int
-        List of positions (row, col) of the mines.
     list_of_revealed_cells : list of tuple of int
         List of the positions (row, col) of revealed cells.
     list_annotated_cells : list of tuple of int
         List of the positions (row, col) of the annotated cells.
     """
-
-    # # create board_to_print that contains X for the location of the mine and an integer that
-    # # represent the number of mine around the cell
-    # board_to_print = board
-    # for mine_position in list_of_mines:
-    #     board_to_print[mine_position[0]][mine_position[1]] = "X"
-
-    # temp_board = []
-
-    # # Fill temp_board with "°" if cell is annotated, "*" if cell is not revealed.
-    # # Else, the value of board_to_print
-    # for row_index, row in enumerate(board_to_print):
-    #     new_row = []
-    #     for col_index, cell in enumerate(row):
-    #         # If the cell is revealed
-    #         if (row_index, col_index) in list_of_revealed_cells:
-    #             new_row.append(cell)
-    #         else:
-    #             # If the cell is annotated
-    #             if (row_index, col_index) in list_annotated_cells:
-    #                 new_row.append("°")
-    #             # If the cell is not revealed
-    #             else:
-    #                 new_row.append("*")
-    #     temp_board.append(new_row)
-
-    # board_to_print = temp_board
-
-    # # Add a space at the end of each caracter for readability
-    # for row in board_to_print:
-    #     for col in row:
-    #         print(str(col) + " ", end="")
-    #     print()
-
-    # print()
 
     # Determine the width of the columns based on the maximum number of columns
     max_col_width = len(str(len(board[0]) - 1)) + 1
@@ -150,7 +112,10 @@ def print_board_in_game(
     print()
 
     # Print delimiter line
-    print(" " * (max_col_width + 2) + "-" * (max_col_width * len(board[0]) + len(board[0]) - 1))
+    print(
+        " " * (max_col_width + 2)
+        + "-" * (max_col_width * len(board[0]) + len(board[0]) - 1)
+    )
 
     # Print each row with row indices
     for row_index, row in enumerate(board):

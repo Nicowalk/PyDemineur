@@ -1,6 +1,6 @@
 """Main file that contains the game loop for Minesweeper."""
 
-from board import create_board, print_board_in_game
+from board import create_board, print_board_in_game, print_board
 from actions import action_selection, cell_selection, reveal_cell
 from utilities import is_already_revealed, is_end_of_game
 
@@ -17,7 +17,7 @@ def game_run(number_of_rows=4, number_of_columns=4):
     # Game data: revealed cells and annotated cells
     revealed_cells = []
     annotated_cells = []
-    print_board_in_game(board, list_of_mines, revealed_cells, annotated_cells)
+    print_board_in_game(board, revealed_cells, annotated_cells)
 
     # Condition of the end of the game
     game_finished = False
@@ -61,17 +61,20 @@ def game_run(number_of_rows=4, number_of_columns=4):
                 annotated_cells.append((row_selection, col_selection))
 
         # Update and display the game board
-        print_board_in_game(board, list_of_mines, revealed_cells, annotated_cells)
+        print_board_in_game(board, revealed_cells, annotated_cells)
 
         # Check if the game is won or lost
         if is_end_of_game(
             number_of_rows, number_of_columns, len(list_of_mines), len(revealed_cells)
         ):
+            print_board(board, list_of_mines)
             print("WINNER")
             game_finished = True
             result = 1
 
         if cell_type == 1:
+            print("YOU HIT A MINE !")
+            print_board(board, list_of_mines)
             print("LOSER")
             game_finished = True
             result = 0

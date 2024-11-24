@@ -22,10 +22,9 @@ def test_print_board(capsys):
 
 def test_print_board_in_game(capsys):
     board = [[0, 1, -1], [1, 2, 1], [0, 1, -1]]
-    list_of_mines = [(0, 2), (2, 2)]
     revealed_cells = [(0, 0), (1, 1)]
     annotated_cells = [(2, 2)]
-    print_board_in_game(board, list_of_mines, revealed_cells, annotated_cells)
+    print_board_in_game(board, revealed_cells, annotated_cells)
     captured = capsys.readouterr()
     assert "*" in captured.out
     assert "°" in captured.out
