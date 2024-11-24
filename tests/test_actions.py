@@ -54,5 +54,37 @@ def test_action_selection(monkeypatch):
 
 
 def test_cell_selection(monkeypatch):
-    monkeypatch.setattr("builtins.input", lambda: "1")
-    assert cell_selection(3, 3) == (1, 1)
+    with patch(
+        "builtins.input", side_effect=["1", "1"]
+    ):
+        assert cell_selection(3,3) == (1,1)
+
+    with patch(
+        "builtins.input", side_effect=["1", "0"]
+    ):
+        assert cell_selection(3,3) == (1,0)
+
+    with patch(
+        "builtins.input", side_effect=["2", "2"]
+    ):
+        assert cell_selection(3,3) == (2,2)
+
+    with patch(
+        "builtins.input", side_effect=["wrong","1", "2"]
+    ):
+        assert cell_selection(3,3) == (1,2)
+    
+    with patch(
+        "builtins.input", side_effect=["0","wrong", "2"]
+    ):
+        assert cell_selection(3,3) == (0,2)
+
+    with patch(
+        "builtins.input", side_effect=["0.1","1", "2"]
+    ):
+        assert cell_selection(3,3) == (1,2)
+    
+    with patch(
+        "builtins.input", side_effect=["0","0.2", "2"]
+    ):
+        assert cell_selection(3,3) == (0,2)
