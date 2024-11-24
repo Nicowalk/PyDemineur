@@ -95,14 +95,21 @@ def cell_selection(number_of_rows, number_of_columns):
     """
 
     row_selection = -1
+    # The user select a row number while it is not valid
     while not 0 <= row_selection < number_of_rows:
-        print("Select the row between 0 and " + str(number_of_rows - 1))
-        row_selection = int(input())
+        try:
+            print("Select the row between 0 and " + str(number_of_rows - 1))
+            row_selection = int(input())
+        except ValueError:
+            print("Invalid input. Please enter an integer.")
 
-    # The user select a column number while it is valid
     col_selection = -1
+    # The user select a column number while it is not valid
     while not 0 <= col_selection < number_of_columns:
-        print("Select the column between 0 and " + str(number_of_columns - 1))
-        col_selection = int(input())
+        try:
+            print("Select the column between 0 and " + str(number_of_columns - 1))
+            col_selection = int(input())
+        except ValueError:
+            print("Invalid input. Please enter an integer.")
 
     return row_selection, col_selection
