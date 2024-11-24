@@ -25,7 +25,7 @@ https://nicowalk.github.io/PyDemineur/
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/nicowalk/pydemineur.git
+    git clone https://github.com/Nicowalk/PyDemineur.git
     cd PyDemineur
     ```
 
