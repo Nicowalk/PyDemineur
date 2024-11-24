@@ -6,5 +6,23 @@ authors = [
 ]
 description = "A simple Minesweeper game in Python for a school project"
 readme = "README.md"
+license = {text = "MIT"}
+keywords = ["minesweeper", "game", "python", "school project"]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+]
+[project.urls]
+homepage = "https://github.com/Nicowalk/PyDemineur"
+documentation = "https://nicowalk.github.io/PyDemineur/"
+repository = "https://github.com/Nicowalk/PyDemineur"
+
 dependencies = [
+    "pytest",
+    "pytest-cov",
+    "pylint",
+    "black",
+    "sphinx",
+    "sphinx_rtd_theme",
+    "myst_parser",
+    "coverage",
 ]
